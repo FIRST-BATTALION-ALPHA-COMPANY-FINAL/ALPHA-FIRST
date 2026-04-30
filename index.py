@@ -1,6 +1,6 @@
 try:
     f = open("diary.txt", "x")
-    f.write("Military Diary")
+    f.write("Military Diary\n")
     print("FILE CREATED!")
     f.close()
 except FileExistsError:
@@ -21,7 +21,8 @@ while True:
     if option == "1":
         try:
             with open("diary.txt", "a") as file:
-                file.write(input("ENTER YOUR DIARY: "))
+                diary = input("ENTER YOUR DIARY: ")
+                file.write(diary + "\n")
                 print("MISSION COMPLETE!")
 
         except FileNotFoundError:
@@ -81,7 +82,7 @@ while True:
                     for line in lines:
                         file.write(line)
 
-                print("ENTRY DELETED!")
+                print("ENTRY ELIMINATED!")
             else:
                 print("INVALID NUMBER!")
 
