@@ -41,7 +41,7 @@ while True:
             print("FILE NOT FOUND!")
 
     elif option == "3":
-    word = input("ENTER WORD TO SEARCH: ")
+        word = input("ENTER WORD TO SEARCH: ")
 
         try:
             with open("diary.txt", "r") as file:
@@ -60,7 +60,40 @@ while True:
         except FileNotFoundError:
             print("FILE NOT FOUND!")
 
+    elif option == "4":
+        try:
+            with open("diary.txt", "r") as file:
+                lines = file.readlines()
+
+            print("\n--- DIARY CONTENT ---")
+
+            number = 1
+            for line in lines:
+                print(number, "-", line.strip())
+                number = number + 1
+
+            choice = int(input("ENTER NUMBER TO DELETE: "))
+
+            if choice >= 1 and choice <= len(lines):
+                del lines[choice - 1]
+
+                with open("diary.txt", "w") as file:
+                    for line in lines:
+                        file.write(line)
+
+                print("ENTRY DELETED!")
+            else:
+                print("INVALID NUMBER!")
+
+        except FileNotFoundError:
+            print("FILE NOT FOUND!")
+
+        except ValueError:
+            print("ENTER NUMBERS ONLY!")
 
     elif option == "5":
         print("DISMISSED!")
         break
+
+    else:
+        print("INVALID CHOICE!")
