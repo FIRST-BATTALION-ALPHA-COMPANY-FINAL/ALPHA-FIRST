@@ -1,4 +1,9 @@
-
+try:
+    f = open("diary.txt", "x")
+    f.write("Military Diary")
+    f.close()
+except FileExistsError:
+    pass
 
 while True:
     print("--------------------")
@@ -66,35 +71,6 @@ while True:
         except FileNotFoundError:
             print("FILE NOT FOUND!")
 
-    elif option == "4":
-        try:
-            with open("diary.txt", "r") as file:
-                content = file.read()
-
-            entries = content.split("---\n")
-            entries = [e for e in entries if e.strip() != ""]
-
-            print("\n--- DIARY CONTENT ---")
-            for i, entry in enumerate(entries, 1):
-                print(f"{i} - {entry.strip().splitlines()[0]}")
-
-            choice = int(input("ENTER ENTRY NUMBER TO DELETE: "))
-
-            if 1 <= choice <= len(entries):
-                entries.pop(choice - 1)
-
-                with open("diary.txt", "w") as file:
-                    for entry in entries:
-                        file.write(entry.strip() + "\n---\n")
-
-                print("ENTRY ELIMINATED!")
-            else:
-                print("INVALID NUMBER!")
-
-        except FileNotFoundError:
-            print("FILE NOT FOUND!")
-        except ValueError:
-            print("ENTER NUMBERS ONLY!")
 
     elif option == "5":
         try:
