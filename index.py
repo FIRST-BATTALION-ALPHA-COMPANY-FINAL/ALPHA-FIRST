@@ -1,9 +1,4 @@
-try:
-    f = open("diary.txt", "x")
-    f.write("Military Diary")
-    f.close()
-except FileExistsError:
-    pass
+
 
 while True:
     print("--------------------")
@@ -32,7 +27,7 @@ while True:
             file.write("\n".join(lines) + "\n---\n")
 
         print("MISSION COMPLETE!")
-        
+
     elif option == "2":
         try:
             with open("diary.txt", "r") as file:
@@ -49,27 +44,7 @@ while True:
         except FileNotFoundError:
             print("FILE NOT FOUND!") 
 
-    elif option == "3":
-        word = input("ENTER WORD TO SEARCH: ").lower()
 
-        try:
-            with open("diary.txt", "r") as file:
-                content = file.read()
-
-            entries = content.split("---\n")
-
-            found = 0
-            for i, entry in enumerate(entries, 1):
-                if word in entry.lower():
-                    print(f"\nENTRY {i}:")
-                    print(entry.strip())
-                    found += 1
-
-            if found == 0:
-                print("NO MATCH FOUND!")
-
-        except FileNotFoundError:
-            print("FILE NOT FOUND!")
 
     elif option == "4":
         try:
