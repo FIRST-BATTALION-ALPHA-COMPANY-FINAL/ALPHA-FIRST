@@ -19,7 +19,20 @@ while True:
     option = input("ENTER OPTION: ")
 
 
+    if option == "1":
+        print("ENTER YOUR DIARY (type END to finish):")
+        lines = []
+        while True:
+            text = input()
+            if text.upper() == "END":
+                break
+            lines.append(text)
 
+        with open("diary.txt", "a") as file:
+            file.write("\n".join(lines) + "\n---\n")
+
+        print("MISSION COMPLETE!")
+        
     elif option == "2":
         try:
             with open("diary.txt", "r") as file:
