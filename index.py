@@ -15,6 +15,7 @@ while True:
     print("[3] SEARCH DIARY")
     print("[4] DELETE DIARY")
     print("[5] EXIT")
+    print("[6] UPDATE DIARY")
 
     option = input("ENTER OPTION: ")
 
@@ -98,3 +99,34 @@ while True:
 
     else:
         print("INVALID CHOICE!")
+
+        elif option == "6":
+    try:
+        with open("diary.txt", "r") as file:
+            lines = file.readlines()
+
+        print("\n--- DIARY CONTENT ---")
+
+        number = 1
+        for line in lines:
+            print(number, "-", line.strip())
+            number = number + 1
+
+        choice = int(input("ENTER NUMBER TO UPDATE: "))
+
+        if choice >= 1 and choice <= len(lines):
+            new_diary = input("ENTER NEW DIARY: ")
+            lines[choice - 1] = new_diary + "\n"
+
+            with open("diary.txt", "w") as file:
+                for line in lines:
+                    file.write(line)
+
+            print("ENTRY UPDATED!")
+        else:
+            print("INVALID NUMBER!")
+
+    except FileNotFoundError:
+        print("FILE NOT FOUND!")
+    except ValueError:
+        print("ENTER NUMBERS ONLY!")
