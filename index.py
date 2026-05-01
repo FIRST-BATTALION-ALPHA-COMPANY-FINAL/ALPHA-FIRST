@@ -46,7 +46,7 @@ while True:
                     print(entry.strip())
 
         except FileNotFoundError:
-            print("FILE NOT FOUND!")
+            print("FILE NOT FOUND!") 
 
     elif option == "3":
         word = input("ENTER WORD TO SEARCH: ").lower()
